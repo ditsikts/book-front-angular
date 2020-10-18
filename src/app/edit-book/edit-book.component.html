@@ -1,0 +1,43 @@
+<p>edit-book works!</p>
+
+<div *ngIf="book">
+
+    <form [formGroup]="bookFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="book">
+            <div class="form-group">
+                <label for="idInput">Id</label>
+                <input class="form-control" id="idInput" type="text" readonly formControlName="_id">
+            </div>
+            <div class="form-group">
+                <label for="titleInput">Title</label>
+                <input class="form-control" id="titleInput" type="text" formControlName="title"
+                    [ngClass]="{ 'is-invalid':submitted && title.errors }">
+                <div class="invalid-feedback" *ngIf="submitted && title.errors">
+                    <div *ngIf="submitted && title.errors.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="submitted && title.errors.minlength">
+                        Name must be at least 2 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="authorInput">Author</label>
+                <input class="form-control" id="authorInput" type="text" formControlName="author"
+                    [ngClass]="{ 'is-invalid':submitted && author.errors }">
+                <div class="invalid-feedback" *ngIf="submitted && author.errors">
+                    <div *ngIf="submitted && author.errors.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="submitted && author.errors.minlength">
+                        Name must be at least 2 characters long.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+
+    </form>
+    <!-- <button type="submit" class="btn btn-danger mt-4" (click)="deleteEmployeeClicked()">Delete</button> -->
+
+</div>
