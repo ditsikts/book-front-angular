@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "book-front-angular"
+    }
+  },
+  "defaultProject": "book-front-angular",
+  "cli": {
+    "analytics": "0481ea53-b764-4c45-83bc-9f490ae9c832"
+  }
 }
