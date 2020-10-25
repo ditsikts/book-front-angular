@@ -1,4 +1,5 @@
 <p>home works!</p>
 <div *ngFor="let book of books">
 <p>{{ book.title }}</p>
+<a [routerLink]="['/book', book._id]" >Details</a>
 </div>

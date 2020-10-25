@@ -23,7 +23,7 @@ export class BookService {
     )
   }
 
-  getBookDetail(id: string): Observable<Book> {
+  getBookView(id: string): Observable<Book> {
     return this.httpClient.get<Book>(this.baseUrl + '/' + id).pipe(
       map(response => {
         return new Book(response)
