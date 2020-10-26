@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Book } from '../models/book';
 
@@ -19,7 +19,7 @@ export class BookService {
         // console.log(response);
         return response.map(o => new Book(o))
       }),
-      catchError((e: any) => Observable.throw(this.errorHandler(e)))
+      catchError((e: any) => throwError(this.errorHandler(e)))
     )
   }
 
@@ -28,27 +28,29 @@ export class BookService {
       map(response => {
         return new Book(response)
       }),
-      catchError((e: any) => Observable.throw(this.errorHandler(e)))
+      catchError((e: any) => throwError(this.errorHandler(e)))
     )
   }
 
   addBook(emp: Book): Observable<Book> {
     return this.httpClient.post<Book>(this.baseUrl, emp).pipe(
-      catchError((e: any) => Observable.throw(this.errorHandler(e))));
+      catchError((e: any) => throwError(this.errorHandler(e))));
   }
 
   deleteBook(id: string): Observable<{}> {
     return this.httpClient.delete(this.baseUrl + '/' + id).pipe(
-      catchError((e: any) => Observable.throw(this.errorHandler(e))));
+      catchError((e: any) => throwError(this.errorHandler(e))));
   }
 
   updateBook(emp: Book): Observable<Book> {
     return this.httpClient.put<Book>(this.baseUrl, emp).pipe(
-      catchError((e: any) => Observable.throw(this.errorHandler(e))));
+      catchError((e: any) => throwError(this.errorHandler(e))));
   }
 
   errorHandler(errorResp: any): void {
     let msg = `status: ${errorResp.status}\nmessage: ${errorResp.error[Object.keys(errorResp.error)[0]]}`
-    alert(msg)
+    // alert(msg)
+    console.log(msg);
+    
   }
 }

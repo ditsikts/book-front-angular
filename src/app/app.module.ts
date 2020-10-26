@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { ViewBookComponent } from './view-book/view-book.component';
+import { FindComponent } from './find/find.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ViewBookComponent } from './view-book/view-book.component';
     HomeComponent,
     HeaderComponent,
     EditBookComponent,
-    ViewBookComponent
+    ViewBookComponent,
+    FindComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
